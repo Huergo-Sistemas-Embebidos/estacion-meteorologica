@@ -1,6 +1,6 @@
 #include "wifi-manager.h"
 
-void WiFiManager::begin(const char *ssid, const char *password) {
+bool WiFiManager::begin(const char *ssid, const char *password) {
     WiFi.begin(ssid, password);
     Serial.print("[Wifi] Conectando a la red...");
     int maxAttempts = 20;  // 20 x 500ms = 10 seconds timeout
@@ -15,6 +15,8 @@ void WiFiManager::begin(const char *ssid, const char *password) {
     if (status != WL_CONNECTED) {
         Serial.print("[Wifi] Error: WiFi connection failed with status code ");
         Serial.println(status);
+
+        return false;
     } else {
         Serial.println("[Wifi] Conectado a la red");
 
@@ -32,5 +34,7 @@ void WiFiManager::begin(const char *ssid, const char *password) {
 
         Serial.print("[Wifi] Subnet: ");
         Serial.println(WiFi.subnetMask());
+
+        return true;
     }
 }
