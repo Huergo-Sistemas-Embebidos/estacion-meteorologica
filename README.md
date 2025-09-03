@@ -132,7 +132,7 @@ Para lograr esto contamos con una abstracción de la librería de `WiFi` nativa 
 	>El DHCP en este caso particular nos jugará en contra, ya que cada vez que se reinicie la conexión, obtendremos una IP nueva. Esto nos complicará saber a que IP acceder para poder visualizar los datos a futuro.
 	
 	2. Procedemos a setear un tiempo de timeout considerable, mediante el uso de su método homónimo. 15 segundos resulta un tiempo aceptable (hasta incluso elevado).
-	3. Finalmente podemos proceder a intentar realizar la conexión con el método `connect`. Este método nos retorna un `bool` indicando si la conexión fue exitosa o no, en caso de que no lo haya sido, debemos seguir intentando mediante el uso del método `ensureConnection` hasta que la misma sea satisfactoria.
+	3. Finalmente podemos proceder a intentar realizar la conexión con el método `begin`. Este método nos retorna un `bool` indicando si la conexión fue exitosa o no, en caso de que no lo haya sido, debemos evitar que el programa siga ejecutandose.
 	4. Agregar las siguientes dos lineas de código:
 ```cpp
 MDNS.begin("meteo-station-<apellido>");
