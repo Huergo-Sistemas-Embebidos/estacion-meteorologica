@@ -107,7 +107,7 @@ Con el PCB ya listo o una protoboard, se propone probar que todos los sensores f
 ### Checkpoint 3
 Debido a que no existe una biblioteca que podamos instalar para manejar el sensor de lluvia, vamos a elaborar la nuestra.
 
-1. Agregar los archivos `rain-meter.h` y `rain-meter.cpp` 
+1. Agregar el archivo `rain-meter.h` e implementar su contraparte llamada `rain-meter.cpp`. Se deberá mappear las lecturas del mismo a valores que vayan de 0 a 5 inclusives, donde 0 significa que no esta lloviendo y 5 es una lluvia muy fuerte.
 2. Importar la clase RainMeter en el archivo principal de la siguiente manera: 
 	`#include "rain-meter.h"`
 3. Generar una instancia de la clase:
