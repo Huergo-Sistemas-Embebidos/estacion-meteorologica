@@ -6,7 +6,7 @@
 class WiFiManager
 {
 public:
-    void begin(const char *ssid, const char *password);
+    bool begin(const char *ssid, const char *password);
 };
 
 #endif
