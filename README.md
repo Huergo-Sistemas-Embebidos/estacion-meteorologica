@@ -175,7 +175,7 @@ Se espera que se almacenen los datos con la siguiente estructura:
 
 | timestamp           | temperature | humidity | pressure  | isRaining | rainIntensity |
 | ------------------- | ----------- | -------- | --------- | --------- | ------------- |
-| 2025-05-03 11:22:27 | 22.70       | 82.20    | 101759.00 | 0         | 1             |
+| 2025-05-03 11:22:27 | 22.70       | 82.20    | 1024.00   | 0         | 1             |
 | ...                 |             |          |           |           |               |
 
 1. Investigar y documentar sobre el formato CSV
