@@ -230,7 +230,6 @@ Ahora que ya sabemos que nuestro servidor web funciona, comenzaremos a agregar c
 	4. En el método `send` ahora modificar el último parámetro y devolver el JSON que se armó previamente.
 5. Ahora necesitaremos agregar un nuevo header:
 	1. llamar al método `sendHeader` (antes de send) el cual tiene la siguiente firma:  `httpServer.sendHeader(<header>, <value>);`
-	2. Enviar el header `"Access-Control-Allow-Origin"` con el valor `"*"`
 6. Por ultimo podemos acceder a la ip del ESP32 desde el navegador y cambiar el endpoint a `/weather/now` para visualizar si efectivamente el JSON fue creado correctamente.
 ### Checkpoint 13
 En este punto vamos a continuar con el armado de endpoints, casualmente el que nos permitirá devolver las mediciones históricas de la memoria SD.
@@ -245,7 +244,6 @@ En este punto vamos a continuar con el armado de endpoints, casualmente el que n
 	2. En el caso de que el archivo contenga algún dato, procederemos a enviarlo, para esto debemos:
 		1. enviar los headers correspondientes:
 			1. header: `"Content-Disposition"` // valor: `"attachment; filename=<fecha>.csv"`
-			2. header: `Access-Control-Allow-Origin` // valor: `"*"`
 		2. Por ultimo haremos un `.send` con el código http "OK", el tipo será `"text/csv"` y el contenido los datos leídos del archivo.
 6.  Una vez finalizado este paso, podemos ir a a la IP del ESP32, endpoint `/weather/<una-fecha>` y revisar si el mismo funciona
 ### Checkpoint 14
