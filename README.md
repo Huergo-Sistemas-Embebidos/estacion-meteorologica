@@ -300,5 +300,47 @@ mdns_name=meteo-station
 9. Llenar nuestro struct `Config` con los valores leídos para cada valor.
 10. No olvidarse que si algún valor no fue leído (por algún error humano o no), no debemos dejar que continue el programa.
 
+```cpp
+String **SDManager::readEnvironmentVariables(const char *path) {
+    File file = SD.open(path, FILE_READ);
+    if (!file) {
+        Serial.println("[SD] Error al abrir el archivo de variables de entorno.");
+        return nullptr;
+    }
+
+    // Temporary storage for pairs
+    std::vector<String *> pairs;
+    while (file.available()) {
+        String line = file.readStringUntil('\n');
+        line.trim();
+        if (line.length() == 0) continue;
+        int eqIdx = line.indexOf('=');
+        if (eqIdx == -1) continue;
+        String key = line.substring(0, eqIdx);
+        String value = line.substring(eqIdx + 1);
+        key.trim();
+        value.trim();
+        // Remove quotes from value
+        if (value.startsWith("\"") && value.endsWith("\"")) {
+            value = value.substring(1, value.length() - 1);
+        }
+        String *pair = new String[2];
+        pair[0] = key;
+        pair[1] = value;
+        pairs.push_back(pair);
+    }
+    file.close();
+
+    // Allocate result array
+    String **result = new String *[pairs.size() + 1];
+    for (size_t i = 0; i < pairs.size(); ++i) {
+        result[i] = pairs[i];
+    }
+    result[pairs.size()] = nullptr;
+    return result;
+}
+
+```
+
 
 
