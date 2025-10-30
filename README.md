@@ -301,5 +301,8 @@ mdns_name=meteo-station
 10. No olvidarse que si algún valor no fue leído (por algún error humano o no), no debemos dejar que continue el programa.
 
 
+## Funcionalidades bonus
+1. Qué pasa si se desconecta el WiFi? no tenemos ninguna forma de solucionarlo en runtime... la unica sería reiniciando el ESP32 pero quizá seria mejor que se "autoarregle". Para eso, podemos agregar otra task que corra en el core que menos trabajo hace y que cada un tiempo prudencial, por ejemplo cada 5 minutos o 10, chequee si sigue conectado a la red. para esto podemos usar `WiFi.status()` y en el caso que este desconectado podemos hacer otro `WiFi.begin()`
+2. Se puede agregar un anemometro, si dejaste unos pines en tu placa, es bastante sencillo agregarlo.
 
 
